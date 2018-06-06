@@ -1,0 +1,37 @@
+<ion-header id="delegateHeader">
+  <ion-navbar hideBackButton="true">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ 'DELEGATE' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<h3 *ngIf="delegateInfo == null" style="text-align: center;">{{ 'ACCOUNT_NOT_DELEGATE' | translate }}</h3>
+<h3 *ngIf="delegateInfo != null">{{ 'DELEGATE_NAME' | translate }}: {{delegateInfo['username']}}</h3>
+<ion-grid *ngIf="delegateInfo != null">
+  <ion-row>
+    <ion-col>
+      {{ 'RANK' | translate }}: {{delegateInfo['rank']}}
+    </ion-col>
+    <ion-col>
+      {{ 'APPROVAL' | translate }}: {{delegateInfo['approval']}}%
+    </ion-col>
+    <ion-col>
+      {{ 'VOTES' | translate }}: {{ delegateInfo['vote'] / 100000000 | number }}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      {{ 'UPTIME' | translate }}: {{delegateInfo['productivity']}}%
+    </ion-col>
+    <ion-col>
+      {{ 'PRODUCED_BLOCKS' | translate }}: {{ delegateInfo['producedblocks'] | number }}
+    </ion-col>
+    <ion-col>
+      {{ 'MISSED_BLOCKS' | translate }}: {{ delegateInfo['missedblocks'] | number }}
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>

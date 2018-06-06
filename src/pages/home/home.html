@@ -1,0 +1,121 @@
+<ion-header id="homeHeader">
+  <ion-navbar hideBackButton="true">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{accountName}}</ion-title>
+    <ion-buttons end *ngIf="!guest">
+      <button ion-button secondary (click)="presentPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding fixed>
+  <ion-grid id="homeGrid">
+    <ion-row id="homeTop">
+      <ion-col>
+        <div *ngIf="account != null">
+          
+          <h5>{{ 'BALANCE' | translate }} <ion-select [(ngModel)]="currency" name="currency" (ionChange)="changeCurrency()">
+            <ion-option *ngFor="let currency of currencies" [value]="currency">
+              {{ currency | uppercase }}
+            </ion-option>
+          </ion-select></h5>
+        
+          <h4 *ngIf="account.account != null"><b><span class="lighterText">ONZ</span> {{account.account.balance/100000000 | number : '1.0-8'}}</b></h4>
+          <h4 *ngIf="account.account == null"><b><span class="lighterText">ONZ</span> 0</b></h4>
+          
+          <h6 *ngIf="account.account != null"> <span class="lighterText">{{symbol}}</span> {{account.account.balance/100000000 * price | number : '1.2-2'}} </h6>
+          <h6 *ngIf="account.account == null"> <span class="lighterText">{{symbol}}</span> 0 </h6>
+          
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row id="tabMenu">
+      <ion-col (click)="openPage(txPage)" [class.activeTab]="txSelected">
+        <ion-icon name="time"></ion-icon>
+      </ion-col>
+      <ion-col (click)="openPage(sendPage)" [class.activeTab]="sendSelected">
+        <ion-icon name="send"></ion-icon>
+      </ion-col>
+      <ion-col (click)="openPage(receivePage)" [class.activeTab]="receiveSelected">
+        <ion-icon name="barcode"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid id="txTable">
+    <ion-nav #content [root]="rootPage" style="top: 220px"></ion-nav>
+    <!-- <ion-row>
+      <ion-col col-2 col-sm-2>
+        <h5>Time</h5>
+      </ion-col>
+      <ion-col col-0 col-sm-4 class="hidden-xs">
+        <h5>Transaction ID</h5>
+      </ion-col>
+      <ion-col col-7 col-sm-4>
+        <h5>From / To</h5>
+      </ion-col>
+      <ion-col col-3 col-sm-2>
+        <h5>Amount</h5>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="transactions == null || (transactions != null && transactions.length == 0)">
+      <ion-col col-12 col-sm-2 *ngIf="transactions == null">
+        <h5>Loading Transactions</h5>
+      </ion-col>
+      <ion-col col-12 col-sm-2 *ngIf="transactions != null && transactions.length == 0">
+        <h5>No Transactions</h5>
+      </ion-col>
+      <ion-col col-12 col-sm-4>
+      </ion-col>
+      <ion-col col-12 col-sm-4>
+      </ion-col>
+      <ion-col col-12 col-sm-2>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let transaction of transactions | paginate: { id: 'txList',
+                                                      itemsPerPage: numToDisplay,
+                                                      currentPage: p,
+                                                      totalItems: total }">
+      <ion-col col-2 col-sm-2>
+        <a (click)="openModal('tx',transaction.id)">{{transaction.date | date:'M/d H:mm'}}</a>
+      </ion-col>
+      <ion-col col-0 col-sm-4 col-4 class="hidden-xs">
+        <a href="https://explorer.onz.4miners.net/tx/{{transaction.id}}" target="_blank">{{transaction.id}}</a>
+      </ion-col>
+      <ion-col col-7 col-sm-4 *ngIf="transaction.recipientId != accountID && transaction.type == 0">    
+        <span *ngIf="contacts.indexOf(transaction.recipientId) != -1">{{contactNames[contacts.indexOf(transaction.recipientId)]}}</span> 
+        <span *ngIf="contacts.indexOf(transaction.recipientId) == -1">{{transaction.recipientId}} </span> 
+        <ion-icon *ngIf="contacts.indexOf(transaction.recipientId) === -1" class="addContact" (click)="addContact(transaction.recipientId)" name="person-add"></ion-icon>
+      </ion-col>
+      <ion-col col-7 col-sm-4 *ngIf="transaction.senderId != accountID  && transaction.type == 0">
+        <span *ngIf="contacts.indexOf(transaction.senderId) != -1">{{contactNames[contacts.indexOf(transaction.senderId)]}}</span> 
+        <span *ngIf="contacts.indexOf(transaction.senderId) == -1">{{transaction.senderId}} </span> 
+        <ion-icon *ngIf="contacts.indexOf(transaction.senderId) === -1" class="addContact" (click)="addContact(transaction.senderId)" name="person-add"></ion-icon>
+      </ion-col>
+      <ion-col col-7 col-sm-4 *ngIf="transaction.type != 0">
+        <span *ngIf="transaction.type == 1">Second Passphrase</span>
+        <span *ngIf="transaction.type == 2">Delegate Registration</span>
+        <span *ngIf="transaction.type == 3">Delegate Vote</span>
+        <span *ngIf="transaction.type != 3 && transaction.type != 2 && transaction.type != 1">{{transaction.type}}</span>
+      </ion-col>
+      <ion-col col-3 col-sm-2>
+        <span [ngClass]="{'danger' : (transaction.senderId == accountID && transaction.amount > 0), 'success':(transaction.recipientId == accountID && transaction.amount > 0)}">{{transaction.amount/100000000 | number : '1.0-8'}}</span> <span class="feeTxt" [ngClass]="{'danger' : (transaction.senderId == accountID)}">({{transaction.fee/100000000 | number : '1.0-8'}})</span>
+      </ion-col>
+    </ion-row>
+    <pagination-controls  id="txList"
+                      (pageChange)="pageChanged($event)"
+                      maxSize="7"
+                      directionLinks="true"
+                      autoHide="true"
+                      previousLabel="Back"
+                      nextLabel="Next"
+                      screenReaderPaginationLabel="Pagination"
+                      screenReaderPageLabel="page"
+                      screenReaderCurrentLabel="You're on page">
+    </pagination-controls> -->
+  </ion-grid>
+</ion-content>

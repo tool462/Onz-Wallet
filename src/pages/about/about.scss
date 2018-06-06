@@ -1,0 +1,22 @@
+page-about {
+	.header button {
+        font-size: 1.5em;
+    }
+
+    .scroll-content, .scroll-content a {
+        background-color: #ea3e4f;
+        text-align: center;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .scroll-content p {
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.75);
+    }
+
+    #donateButton {
+        background-color: #fff;
+        color: #ea3e4f;
+    }
+}
