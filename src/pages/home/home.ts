@@ -60,7 +60,7 @@ export class HomePage {
       this.accountID = this.accountData.getAccountID();
       this.accountName = this.accountData.getAccountName();
       if (!this.accountName || this.accountName == null || this.accountName == 'undefined') {
-      	this.accountName = 'Community Onz Wallet';
+      	this.accountName = 'Onz Community Wallet';
       }
       this.loadBalance();
 	  this.changeCurrency();
