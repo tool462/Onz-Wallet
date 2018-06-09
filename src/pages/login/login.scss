@@ -15,7 +15,7 @@ page-login {
     }
 
     #loginLogo {
-        background: #ea3e4f;
+        background: #ffffff;
         //background: linear-gradient(45deg, #ea3e4f 0%, #ff8765 100%);
         text-align: center;
         margin: -16px -16px 2px -16px;
@@ -72,7 +72,12 @@ page-login {
     }
 
     button#mainFab {
-        background-color: #f57c00;
+        //background-color: #f57c00;
+        background: linear-gradient(45deg, #ea3e4f 0%, #ff8765 100%);
+    }
+
+    button#langFab {
+        background: linear-gradient(45deg, #fd81b5 0%, #c961f7 50%, #8089ff 100%);
     }
 
     #guestLogin, #offlineTx {
@@ -80,7 +85,7 @@ page-login {
     }
 
     #guestLogin a, #offlineTx a {
-        color: #fff;
+        color: #000000;
         text-transform: uppercase;
         font-size: 16px;
         font-weight: bold;
@@ -97,6 +102,12 @@ page-login {
         color: #3D4DB8;
         font-size: 18px;
     }
+
+    .accountAddress {
+        color: #8089ff;
+        font-family: 'Roboto', 'Ubuntu', sans-serif;
+    }
+
     .lskCurrency {
         font-size: 14px;
         color: #ccc;
@@ -104,7 +115,7 @@ page-login {
 
     .scroll-content {
         //background: linear-gradient(45deg, #ea3e4f 0%, #ff8765 100%);
-        background-color: #ea3e4f;
+        background-color: #ffffff;
     }
 
     #loader {
@@ -113,8 +124,6 @@ page-login {
         color: #fff;
         font-size: 24px;
     }
-
-
 
     #savePasswordBox .item-inner {
         border: none;

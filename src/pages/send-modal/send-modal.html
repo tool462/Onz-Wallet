@@ -59,7 +59,7 @@
 
 	<ion-row responsive-sm>
 		<ion-col>
-			<button ion-button [disabled]="disableSend || !sendForm.valid" (click)="onSend()" type="submit" block>Send</button>
+			<button ion-button id="sendButton" [disabled]="disableSend || !sendForm.valid" (click)="onSend()" type="submit" block>Send</button>
 		</ion-col>
     </ion-row>
     <ion-row responsive-sm>

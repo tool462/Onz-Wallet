@@ -16,12 +16,12 @@
 <ion-content padding>
   <h6>{{ 'ACCOUNT' | translate }}:</h6> <h4>{{accountID}}</h4>
   <h6>{{ 'PASSPHRASE' | translate }}:</h6> <h4>{{passphrase}}</h4>
-  <p style="color: rgba(255, 255, 255, 0.75)">{{ 'SECURE_LOCATION' | translate }} <br />
+  <p style="color: rgba(0, 0, 0, 0.75)">{{ 'SECURE_LOCATION' | translate }} <br />
   <span style="color:#FFBA33;text-transform: uppercase;">{{ 'CANNOT_RECOVER' | translate }}</span></p>
   <form>
 	<ion-list no-lines>
 		<ion-item>
-		    <ion-label>{{ 'SAVE_TO_DEVICE' | translate }}</ion-label>
+		    <ion-label style="color: rgba(0, 0, 0, 0.75)">{{ 'SAVE_TO_DEVICE' | translate }}</ion-label>
 		    <ion-checkbox [(ngModel)]="savePassphrase" name="savePassphrase"></ion-checkbox>
 		</ion-item>		
 		<ion-item>

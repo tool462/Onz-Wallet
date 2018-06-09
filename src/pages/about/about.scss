@@ -4,19 +4,20 @@ page-about {
     }
 
     .scroll-content, .scroll-content a {
-        background-color: #ea3e4f;
+        background-color: #ffffff;
         text-align: center;
-        color: #fff;
+        color: #000000;
         text-decoration: none;
     }
 
     .scroll-content p {
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.75);
+        color: rgba(0, 0, 0, 0.75);
     }
 
     #donateButton {
-        background-color: #fff;
-        color: #ea3e4f;
+        //background-color: #fff;
+        background: linear-gradient(45deg, #ea3e4f 0%, #ff8765 100%);
+        color: #000000;
     }
 }

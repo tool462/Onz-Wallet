@@ -44,7 +44,8 @@
 
 	<ion-row responsive-sm>
 		<ion-col>
-			<button ion-button [disabled]="disableSend" (click)="onSend()" type="submit" block>{{ 'SEND' | translate }}</button>
+		<!--	<button ion-button id="sendButton" [disabled]="disableSend" (click)="onSend()" block>{{ 'SEND' | translate }}</button> -->
+			    <button ion-button id="sendButton" [disabled]="disableSend" (click)="onSend()" block>{{ 'SEND' | translate }}</button>
 		</ion-col>
     </ion-row>
     <ion-row responsive-sm>

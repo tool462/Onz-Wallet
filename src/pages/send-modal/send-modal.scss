@@ -22,4 +22,9 @@ page-send-modal {
         top: 13px;
     	position: relative;
     }
+
+    #sendButton {
+        background: linear-gradient(45deg, #ea3e4f 0%, #ff8765 100%);
+        color: #000000;
+    }
 }

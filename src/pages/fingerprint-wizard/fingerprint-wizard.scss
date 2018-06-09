@@ -1,6 +1,7 @@
 page-fingerprint-wizard {
 	.scroll-content {
-		background-color: #ea3e4f;
+        //background-color: #ea3e4f;
+        background-color: #ffffff;
 	}
 
 	#qrIcon {
@@ -15,5 +16,11 @@ page-fingerprint-wizard {
     .item-md {
     	border-radius: 2px;
    		margin: 20px 0;
+    }
+
+    #saveButton {
+        //background-color: #fff;
+        background: linear-gradient(45deg, #ea3e4f 0%, #ff8765 100%);
+        color: #000000;
     }
 }

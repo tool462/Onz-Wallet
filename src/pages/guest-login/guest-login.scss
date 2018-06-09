@@ -1,6 +1,6 @@
 page-guest-login {
 	.scroll-content {
-		background-color: #ea3e4f;
+		background-color: #ffffff;
 	}
 
 	#qrIcon {
@@ -10,5 +10,11 @@ page-guest-login {
         height: 100%;
         color: #777;
     	position: relative;
+    }
+
+    #loginButton {
+        //background-color: #fff;
+        background: linear-gradient(45deg, #ea3e4f 0%, #ff8765 100%);
+        color: #000000;
     }
 }

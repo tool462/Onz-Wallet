@@ -59,8 +59,8 @@
 	    <div *ngIf="account.name != 'undefined'">{{account.name}}
 	    <span class="accountBalance">{{account.balance/100000000 | number : '1.2-8' }} <span class="lskCurrency">ONZ</span></span>
 	    <br />
-	    {{account.account}}</div>
-	    <div *ngIf="account.name == 'undefined'">{{account.account}}<span class="accountBalance">{{account.balance/100000000 | number : '1.2-8' }} <span class="lskCurrency">ONZ</span></span></div>
+	    <span class="accountAddress">{{account.account}}</span></div>
+	    <div *ngIf="account.name == 'undefined'"><span class="accountAddress">{{account.account}}</span><span class="accountBalance">{{account.balance/100000000 | number : '1.2-8' }} <span class="lskCurrency">ONZ</span></span></div>
 	  </button>  
 	</ion-list>
 

@@ -27,4 +27,15 @@ page-send-offline-tx {
 		width: 100%;
 		height: 18vh;
 	}
+
+	.button-md {
+        background: #ffffff;
+        color: #000000;
+    }
+
+	#sendButton {
+        //background-color: #fff;
+        background: linear-gradient(45deg, #ea3e4f 0%, #ff8765 100%);
+        color: #000000;
+    }
 }
