@@ -5,7 +5,7 @@
 	"DELEGATE": "Delegate",
 	"ABOUT": "About",
 	"IMPORT": "Import Account",
-	"GENERATE": "Generate a New Account",
+	"GENERATE": "Generate New Account",
 	"GUEST_LOGIN": "Guest Login",
 	"OFFLINE_TX": "Broadcast Offline Tx",
 	"LOADING_ACCOUNTS": "Loading Accounts",
