@@ -5,6 +5,9 @@ import { SendModalPage } from '../send-modal/send-modal';
 
 import { AccountDataProvider } from '../../providers/account-data/account-data';
 
+declare var require: any;
+const appVersion = require('../../../package.json').version;
+
 /**
  * Generated class for the AboutPage page.
  *
@@ -18,7 +21,7 @@ import { AccountDataProvider } from '../../providers/account-data/account-data';
   templateUrl: 'about.html',
 })
 export class AboutPage {
-
+  version: string = appVersion;
   constructor(public navCtrl: NavController, public navParams: NavParams, public accountData: AccountDataProvider, public modalCtrl: ModalController) {
   }
 
